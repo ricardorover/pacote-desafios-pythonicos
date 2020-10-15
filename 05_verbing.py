@@ -10,9 +10,18 @@ Se o tamanho da string for menor que 3, não altere nada.
 Retorne o resultado da string.
 """
 
-def verbing(s):
-    # +++ SUA SOLUÇÃO +++
-    return
+def verbing(verb):
+    """ Resposta 1 """
+    # return verb if len(verb) < 3 else (verb + "ly") if verb.endswith("ing") else (verb + "ing")
+
+    """ Resposta 2 """
+    if len(verb) < 3:
+        return verb
+    
+    if verb.endswith("ing"):
+        return verb + "ly"
+    
+    return verb + "ing"
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---

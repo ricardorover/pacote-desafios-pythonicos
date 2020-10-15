@@ -14,8 +14,19 @@ onde todas as instancias de stra foram substituidas por strb.
 """
 
 def fix_start(s):
-    # +++ SUA SOLUÇÃO +++
-    return
+    """ Resposta 1 """
+    # return s[0] + s[1:].replace(s[0], "*")
+
+    """ Resposta 2 """
+    # return "".join([s[0]] + ["*" if s[index] == s[0] else s[index] for index in range(1, len(s))])
+
+    """ Resposta 3 """
+    # first = s[0]
+    # return "".join([first] + ["*" if letter == first else letter for letter in s[1:]])
+
+    """ Resposta 4 """
+    return "".join(["*" if index != 0 and letter == s[0] else letter for index, letter in enumerate(s)])
+
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---

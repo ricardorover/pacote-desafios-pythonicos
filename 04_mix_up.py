@@ -13,8 +13,8 @@ Assuma que a e b tem tamanho 2 ou maior.
 """
 
 def mix_up(a, b):
-    # +++ SUA SOLUÇÃO +++
-    return
+    slice_ = min(len(a), len(b), 2)
+    return ''.join([b[:slice_], a[slice_:], " ", a[:slice_], b[slice_:]])
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
@@ -42,3 +42,10 @@ if __name__ == '__main__':
     test(mix_up, ('dog', 'dinner'), 'dig donner')
     test(mix_up, ('gnash', 'sport'), 'spash gnort')
     test(mix_up, ('pezzy', 'firm'), 'fizzy perm')
+    test(mix_up, ('m', 'p'), 'p m')
+    test(mix_up, ('me', 'yu'), 'yu me')
+    test(mix_up, ('me', 'u'), 'ue m')
+    test(mix_up, ('everyone', 'u'), 'uveryone e')
+    test(mix_up, ('everyone', ''), 'everyone ')
+    test(mix_up, ('', 'world'), ' world')
+    test(mix_up, ('', ''), ' ')

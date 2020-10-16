@@ -10,9 +10,37 @@ Exemplo: 'abcde', a metade da frente é 'abc' e a de trás é 'de'.
 Finalmente, dadas duas strings a e b, retorne uma string na forma:
 a-frente + b-frente + a-trás + b-trás
 """
+
+import math
+
 def front_back(a, b):
-    # +++ SUA SOLUÇÃO +++
-    return
+    """ Resposta 1 """
+    # half_a = math.ceil(len(a) / 2)
+    # half_b = math.ceil(len(b) / 2)
+    # return a[:half_a] + b[:half_b] + a[half_a:] + b[half_b:]
+
+    """ Resposta 2 """
+    # half_a, half_b = map(math.ceil, (len(a) / 2, len(b) / 2))
+    # return "".join([a[:half_a], b[:half_b], a[half_a:], b[half_b:]])
+
+    """ Resposta 3 """
+    # def half(string, last_part=False):
+    #     middle = math.ceil(len(string) / 2)
+    #     return string[middle:] if last_part else string[:middle]
+
+    # last_half = lambda s : half(s, last_part=True)
+    # return "".join([half(a), half(b), last_half(a), last_half(b)])
+
+    """ Resposta 4 """
+    def split(string):
+        middle = math.ceil(len(string) / 2)
+        return (string[:middle], string[middle:])
+    
+    def mix(tuple1, tuple2):
+        return tuple1[0], tuple2[0], tuple1[1], tuple2[1]
+
+    return "".join(mix(split(a), split(b)))
+
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---

@@ -9,9 +9,9 @@ por 'good' e retorne a string resultante.
 Exemplo: 'The dinner is not that bad!' retorna 'The dinner is good!'
 """
 
-def not_bad(s):
-    # +++ SUA SOLUÇÃO +++
-    return
+def not_bad(phrase):
+    bad_part = phrase[phrase.find('not'):phrase.rfind('bad') + len('bad')]
+    return phrase.replace(bad_part, 'good') if bad_part else phrase
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
@@ -35,7 +35,12 @@ def test(f, in_, expected):
 
 if __name__ == '__main__':
     # Testes que verificam o resultado do seu código em alguns cenários.
+    test(not_bad, 'This movie is not bad', 'This movie is good')
     test(not_bad, 'This movie is not so bad', 'This movie is good')
     test(not_bad, 'This dinner is not that bad!', 'This dinner is good!')
     test(not_bad, 'This tea is not hot', 'This tea is not hot')
     test(not_bad, "It's bad yet not", "It's bad yet not")
+    test(not_bad, 'This movie is not bad not', 'This movie is good not')
+    test(not_bad, 'This movie is not not bad', 'This movie is good')
+    test(not_bad, 'This movie is not not bad bad', 'This movie is good')
+    test(not_bad, 'This movie is not bad, but again not bad', 'This movie is good')

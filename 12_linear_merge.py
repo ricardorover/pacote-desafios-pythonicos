@@ -53,7 +53,7 @@ def linear_merge(list1, list2):
     while len(list1) + len(list2) > 0: # while = O(n)
         has_only_list1 = list1 and not list2
         has_both_lists = list1 and list2
-        pop_from_list1 = has_only_list1 or (has_both_lists and list1[-1:] > list2[-1:])
+        pop_from_list1 = has_only_list1 or (has_both_lists and list1[-1] > list2[-1])
         response.append(list1.pop(-1) if pop_from_list1 else list2.pop(-1)) # append = O(1)
 
     response.reverse() # reverse = O(n)

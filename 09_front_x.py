@@ -12,9 +12,27 @@ antes de combina-las.
 """
 
 def front_x(words):
-    # +++ SUA SOLUÇÃO +++
-    return
+    """ Resposta 1 """
+    # x_list, others_list = [], []
+    # for word in words:
+    #     if word[0] == 'x':
+    #         x_list.append(word)
+    #     else:
+    #         others_list.append(word)
+    # x_list.sort()
+    # others_list.sort()
+    # return [*x_list, *others_list]
 
+    """ Resposta 2 """
+    # x_list = sorted([word for word in words if word.startswith('x')])
+    # others_list = sorted([word for word in words if not word.startswith('x')])
+    # return [*x_list, *others_list]
+
+    """ Resposta 3 """
+    def sort(word):
+        return word if word[0] == "x" else f"z{word}"
+    
+    return sorted(words, key=sort)
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 

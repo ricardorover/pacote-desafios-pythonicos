@@ -47,21 +47,22 @@ def linear_merge(list1, list2):
     # return response
 
 
-    # """ Resposta 4 - com complexidade linear """
-    # response = []
+    """ Resposta 4 - com complexidade linear """
+    response = []
 
-    # while len(list1) + len(list2) > 0:
-    #     has_only_list1 = list1 and not list2
-    #     has_both_lists = list1 and list2
-    #     pop_from_list1 = has_only_list1 or (has_both_lists and list1[-1:] > list2[-1:])
-    #     response.insert(0, list1.pop(-1) if pop_from_list1 else list2.pop(-1))
+    while len(list1) + len(list2) > 0: # while = O(n)
+        has_only_list1 = list1 and not list2
+        has_both_lists = list1 and list2
+        pop_from_list1 = has_only_list1 or (has_both_lists and list1[-1:] > list2[-1:])
+        response.append(list1.pop(-1) if pop_from_list1 else list2.pop(-1)) # append = O(1)
 
-    # return response
-    
+    response.reverse() # reverse = O(n)
+    return response
 
-    """ Resposta 5 - com complexidade linear usando heapq """
-    import heapq
-    return list(heapq.merge(list1, list2))
+
+    # """ Resposta 5 - com complexidade linear usando heapq """
+    # import heapq
+    # return list(heapq.merge(list1, list2))
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 

@@ -13,21 +13,37 @@ def linear_merge(list1, list2):
     # """ Resposta 1 """
     # return sorted(list1 + list2)
     
-    """ Resposta 2 """
-    list1, list2 = list1.copy(), list2.copy()
+
+    # """ Resposta 2 """
+    # list1, list2 = list1.copy(), list2.copy()
+    # response = []
+
+    # while len(list1) + len(list2) > 0:
+    #     listItem1 = list1[0] if len(list1) > 0 else None
+    #     listItem2 = list2[0] if len(list2) > 0 else None
+        
+    #     if (listItem1 and not listItem2) or (listItem1 and listItem2 and listItem1 < listItem2):
+    #         response.append(listItem1)
+    #         list1.pop(0)
+    #     else:
+    #         response.append(listItem2)
+    #         list2.pop(0)
+
+    # return response
+
+
+    """ Resposta 3 """
     response = []
 
     while len(list1) + len(list2) > 0:
-        listItem1 = list1[0] if len(list1) > 0 else None
-        listItem2 = list2[0] if len(list2) > 0 else None
-        
-        if (listItem1 and not listItem2) or (listItem1 and listItem2 and listItem1 < listItem2):
-            response.append(listItem1)
-            list1.pop(0)
-        else:
-            response.append(listItem2)
-            list2.pop(0)
+        has_only_list1 = list1 and not list2
+        has_both_lists = list1 and list2
 
+        if has_only_list1 or (has_both_lists and list1[:1] < list2[:1]):
+            response.append(list1.pop(0))
+        else:
+            response.append(list2.pop(0))
+            
     return response
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---

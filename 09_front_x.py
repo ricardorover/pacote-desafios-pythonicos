@@ -24,9 +24,9 @@ def front_x(words):
     # return [*x_list, *others_list]
 
     """ Resposta 2 """
-    # x_list = sorted([word for word in words if word.startswith('x')])
-    # others_list = sorted([word for word in words if not word.startswith('x')])
-    # return [*x_list, *others_list]
+    x_list = sorted([word for word in words if word.startswith('x')])
+    others_list = sorted([word for word in words if not word.startswith('x')])
+    return x_list + others_list
 
     """ Resposta 3 """
     def sort(word):

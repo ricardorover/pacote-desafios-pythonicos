@@ -57,7 +57,28 @@ import sys
 # +++ SUA SOLUÇÃO +++
 # Defina as funções print_words(filename) e print_top(filename).
 
+def _words_from_file(filename):
+    with open(filename, 'r') as file:
+        return file.read().replace('\n', ' ').lower().split()
 
+def _words_count_dict(words):
+    words_count = {}
+    for word in words:
+        words_count[word] = words_count.get(word, 0) + 1
+    return words_count
+
+def count_words_tuples(filename):
+    words_dict = _words_count_dict(_words_from_file(filename))
+    return sorted(words_dict.items())
+
+def count_top_words_tuples(filename, limit=20):
+    words_dict = _words_count_dict(_words_from_file(filename))
+    sort = lambda item : item[1]
+    return sorted(words_dict.items(), key=sort, reverse=True)[:limit]
+
+def print_tuples(items):
+    print("\n".join(f"{word} {count}" for word, count in items))
+    
 # A função abaixo chama print_words() ou print_top() de acordo com os
 # parêtros do programa.
 def main():
@@ -68,9 +89,9 @@ def main():
     option = sys.argv[1]
     filename = sys.argv[2]
     if option == '--count':
-        print_words(filename)
+        print_tuples(count_words_tuples(filename))
     elif option == '--topcount':
-        print_top(filename)
+        print_tuples(count_top_words_tuples(filename))
     else:
         print('unknown option: ' + option)
         sys.exit(1)

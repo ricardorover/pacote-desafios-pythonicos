@@ -27,13 +27,28 @@ def both_ends(s: str):
     """
     Resposta 3, iterando
     """
-    length = len(s)
-    if length < 2:
-        return ""
+    # length = len(s)
+    # if length < 2:
+    #     return ""
 
+    # response = []
+    # for i in (*range(0, 2), *range(length-2, length)):
+    #     response.append(s[i])
+    # return "".join(response)
+
+    """ Resposta 4, com while """
     response = []
-    for i in (*range(0, 2), *range(length-2, length)):
-        response.append(s[i])
+    index = 0
+
+    while len(response) < 4:
+        if len(s) < 2:
+            break
+        response.append(s[index])
+        if len(response) == 2:
+            index = len(s) - 2
+        else:
+            index += 1
+
     return "".join(response)
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
@@ -61,4 +76,5 @@ if __name__ == '__main__':
     test(both_ends, 'Hello', 'Helo')
     test(both_ends, 'a', '')
     test(both_ends, 'ab', 'abab') # novo teste sugerido pelo Gilson Filho
+    test(both_ends, 'ha', 'haha') # novo teste sugerido pelo Renato - Additional test with two distinct letters word
     test(both_ends, 'xyz', 'xyyz')

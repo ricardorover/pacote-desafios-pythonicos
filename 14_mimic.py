@@ -57,10 +57,12 @@ def mimic_dict(filename):
     return usage_dict
 
 def mimic(mimic_dict, word, limit=200):
-    """Dado o dicionario imitador e a palavra inicial, imprime texto de 200 palavras."""
     next_word = random.choice(tuple(mimic_dict[word]))
     return [word, " "] + mimic(mimic_dict, next_word, limit=limit-1) if limit > 0 else []
 
+def print_mimic(mimic_dict, word):
+    """Dado o dicionario imitador e a palavra inicial, imprime texto de 200 palavras."""
+    print(''.join(mimic(mimic_dict, '')))
 
 # Chama mimic_dict() e mimic()
 def main():
@@ -69,7 +71,7 @@ def main():
     sys.exit(1)
 
   dict_ = mimic_dict(sys.argv[1])
-  print(''.join(mimic(dict_, '')))
+  print_mimic(dict_, '')
 
 
 if __name__ == '__main__':

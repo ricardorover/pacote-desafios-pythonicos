@@ -48,10 +48,8 @@ def file_words(filename):
         return file.read().lower().split()
 
 def mimic_dict(filename):
-    """Retorna o dicionario imitador mapeando cada palavra para a lista de
-    palavras subsequentes."""
+    """Retorna o dicionario imitador mapeando cada palavra para a lista de palavras subsequentes."""
     words = file_words(filename)
-    print(words)
     usage_dict = defaultdict(set)
 
     for word, next_word in zip([""] + words, words + [""]):

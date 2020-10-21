@@ -41,30 +41,30 @@ método que escolhe um elemento aleatório de uma lista não vazia.
 
 import random
 import sys
+from collections import defaultdict
 
 def file_words(filename):
     with open(filename, 'r') as file:
-        return file.read().replace('\n', ' ').lower().split()
+        return file.read().lower().split()
 
 def mimic_dict(filename):
     """Retorna o dicionario imitador mapeando cada palavra para a lista de
     palavras subsequentes."""
     words = file_words(filename)
-    usage_dict = {"": words[:1]}
+    print(words)
+    usage_dict = defaultdict(set)
 
-    for word, next_word in zip(words, words[1:] + [""]):
-        next_word_dict = usage_dict.get(word, set())
-        next_word_dict.add(next_word)
-        usage_dict[word] = next_word_dict
+    for word, next_word in zip([""] + words, words + [""]):
+        usage_dict[word].add(next_word)
     return usage_dict
 
 def mimic(mimic_dict, word, limit=200):
     """Dado o dicionario imitador e a palavra inicial, imprime texto de 200 palavras."""
     next_word = random.choice(tuple(mimic_dict[word]))
-    return [word, " "] + mimic(mimic_dict, next_word, limit=limit-1) if next_word != '' and limit > 0 else []
+    return [word, " "] + mimic(mimic_dict, next_word, limit=limit-1) if limit > 0 else []
 
 
-# Chama mimic_dict() e print_mimic()
+# Chama mimic_dict() e mimic()
 def main():
   if len(sys.argv) != 2:
     print('Utilização: ./14_mimic.py file-to-read')
